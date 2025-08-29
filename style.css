@@ -62,6 +62,7 @@ button {
 
 /* Fotos moviéndose libremente */
 .floating {
-    width: 120px;
+    width: 180px; /* más grande */
+    max-width: 220px; /* nunca demasiado grande */
     position: absolute;
 }
