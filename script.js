@@ -8,17 +8,17 @@ function toggleMusic() {
     }
 }
 
-// ===== Animación ligera de fotos (opcional para más movimiento) =====
+// ===== Animación ligera de fotos =====
 const floatingPhotos = document.querySelectorAll('.floating');
 
 floatingPhotos.forEach((photo, index) => {
-    const speed = 2 + Math.random() * 3; // velocidad distinta para cada foto
+    const speed = 1 + Math.random() * 2; // velocidad distinta
     let direction = 1;
     let position = 0;
 
     setInterval(() => {
-        position += direction * 0.5; // cambia el movimiento vertical
-        if (position > 20 || position < -20) direction *= -1;
+        position += direction * 1; // más rápido
+        if (position > 25 || position < -25) direction *= -1;
         photo.style.transform = `translateY(${position}px) rotate(${position/2}deg)`;
     }, 50 * speed);
 });
