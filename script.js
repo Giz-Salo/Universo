@@ -1,4 +1,4 @@
-// ===== Función para reproducir/pausar música =====
+// Reproducir / pausar música
 function toggleMusic() {
     const music = document.getElementById('music');
     if (music.paused) {
@@ -8,17 +8,27 @@ function toggleMusic() {
     }
 }
 
-// ===== Animación ligera de fotos =====
+// Fotos flotando libremente como asteroides
 const floatingPhotos = document.querySelectorAll('.floating');
 
-floatingPhotos.forEach((photo, index) => {
-    const speed = 1 + Math.random() * 2; // velocidad distinta
-    let direction = 1;
-    let position = 0;
+floatingPhotos.forEach(photo => {
+    let x = Math.random() * window.innerWidth;
+    let y = Math.random() * window.innerHeight;
+    let dx = (Math.random() - 0.5) * 3; // velocidad horizontal
+    let dy = (Math.random() - 0.5) * 3; // velocidad vertical
+
+    photo.style.left = x + 'px';
+    photo.style.top = y + 'px';
 
     setInterval(() => {
-        position += direction * 1; // más rápido
-        if (position > 25 || position < -25) direction *= -1;
-        photo.style.transform = `translateY(${position}px) rotate(${position/2}deg)`;
-    }, 50 * speed);
+        x += dx;
+        y += dy;
+
+        // Rebote en bordes
+        if(x < 0 || x > window.innerWidth - photo.width) dx *= -1;
+        if(y < 0 || y > window.innerHeight - photo.height) dy *= -1;
+
+        photo.style.left = x + 'px';
+        photo.style.top = y + 'px';
+    }, 25); // más rápido
 });

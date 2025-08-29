@@ -1,27 +1,24 @@
-/* ===== Fondo animado ===== */
 body {
     margin: 0;
     padding: 0;
     height: 100vh;
     overflow: hidden;
-    background-image: url('nebula.jpg'); /* Fondo centrado */
+    background-image: url('nebula.jpg');
     background-size: cover;
     background-repeat: repeat;
     background-attachment: fixed;
     background-position: center center;
-    animation: moveBackground 20s linear infinite; /* Fondo más rápido */
+    animation: moveBackground 15s linear infinite; /* fondo más rápido */
     font-family: Arial, sans-serif;
     color: #00FF00;
     text-align: center;
 }
 
-/* ===== Animación del fondo ===== */
 @keyframes moveBackground {
     0% { background-position: 0 0; }
-    100% { background-position: 1500px 1500px; } /* más velocidad */
+    100% { background-position: 1500px 1500px; }
 }
 
-/* ===== Mensaje centrado ===== */
 .message {
     position: absolute;
     top: 30%;
@@ -43,35 +40,11 @@ body {
     animation: floatText 2s ease-in-out infinite alternate;
 }
 
-/* ===== Animación de texto ===== */
 @keyframes floatText {
     0% { transform: translateY(0); }
     100% { transform: translateY(-10px); }
 }
 
-/* ===== Fotos flotando ===== */
-.photos {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
-
-.floating {
-    width: 120px;
-    margin: 15px;
-    animation: floatPhoto 4s ease-in-out infinite alternate; /* más rápido */
-}
-
-/* Animación individual de fotos */
-@keyframes floatPhoto {
-    0% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-25px) rotate(15deg); }
-    100% { transform: translateY(0) rotate(-15deg); }
-}
-
-/* ===== Botón de música ===== */
 button {
     position: absolute;
     bottom: 20px;
@@ -85,4 +58,10 @@ button {
     background-color: #00FF00;
     color: black;
     z-index: 3;
+}
+
+/* Fotos moviéndose libremente */
+.floating {
+    width: 120px;
+    position: absolute;
 }
