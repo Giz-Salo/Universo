@@ -29,13 +29,13 @@ body {
 }
 
 .message h1 {
-    font-size: 3em;
+    font-size: 3em; /* tamaño del texto */
     margin: 0;
     animation: floatText 2s ease-in-out infinite alternate;
 }
 
 .message h2 {
-    font-size: 2em;
+    font-size: 2em; /* tamaño del texto */
     margin: 0;
     animation: floatText 2s ease-in-out infinite alternate;
 }
@@ -60,9 +60,8 @@ button {
     z-index: 3;
 }
 
-/* Fotos moviéndose libremente */
+/* Fotos flotando suavemente, tamaño perfecto como antes */
 .floating {
-    width: 180px; /* más grande */
-    max-width: 220px; /* nunca demasiado grande */
+    width: 150px; /* ajusta según el tamaño que te gustaba */
     position: absolute;
 }
