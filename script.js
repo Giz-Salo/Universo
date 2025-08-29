@@ -1,46 +1,24 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const photos = document.querySelectorAll(".photo");
-    let photoData = [];
-
-    // Centro de la pantalla
-    let centerX = window.innerWidth / 2;
-    let centerY = window.innerHeight / 2;
-
-    // Inicializar posiciones y velocidad
-    photos.forEach(photo => {
-        let x = centerX + (Math.random() * 200 - 100);
-        let y = centerY + (Math.random() * 200 - 100);
-
-        let dx = (Math.random() - 0.5) * 3; // velocidad X
-        let dy = (Math.random() - 0.5) * 3; // velocidad Y
-
-        photoData.push({ photo, x, y, dx, dy });
-        photo.style.left = `${x}px`;
-        photo.style.top = `${y}px`;
-    });
-
-    // Animación
-    function animate() {
-        photoData.forEach(obj => {
-            obj.x += obj.dx;
-            obj.y += obj.dy;
-
-            // Rebote en bordes
-            if (obj.x < 0 || obj.x > window.innerWidth - 150) obj.dx *= -1;
-            if (obj.y < 0 || obj.y > window.innerHeight - 150) obj.dy *= -1;
-
-            obj.photo.style.left = `${obj.x}px`;
-            obj.photo.style.top = `${obj.y}px`;
-        });
-
-        requestAnimationFrame(animate);
+// ===== Función para reproducir/pausar música =====
+function toggleMusic() {
+    const music = document.getElementById('music');
+    if (music.paused) {
+        music.play();
+    } else {
+        music.pause();
     }
+}
 
-    animate();
+// ===== Animación ligera de fotos (opcional para más movimiento) =====
+const floatingPhotos = document.querySelectorAll('.floating');
 
-    // Ajustar centro al redimensionar pantalla
-    window.addEventListener("resize", () => {
-        centerX = window.innerWidth / 2;
-        centerY = window.innerHeight / 2;
-    });
+floatingPhotos.forEach((photo, index) => {
+    const speed = 2 + Math.random() * 3; // velocidad distinta para cada foto
+    let direction = 1;
+    let position = 0;
+
+    setInterval(() => {
+        position += direction * 0.5; // cambia el movimiento vertical
+        if (position > 20 || position < -20) direction *= -1;
+        photo.style.transform = `translateY(${position}px) rotate(${position/2}deg)`;
+    }, 50 * speed);
 });

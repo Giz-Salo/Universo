@@ -1,87 +1,88 @@
-/* Fondo de universo animado más rápido */
-body, html {
+/* ===== Fondo animado ===== */
+body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    height: 100vh;
     overflow: hidden;
-    font-family: 'Segoe UI', sans-serif;
-    body {
-    background-image: url('nebula.jpg');
+    background-image: url('nebula.jpg'); /* tu imagen de fondo */
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat; /* para que se vea continuo el movimiento */
     background-attachment: fixed;
-    background-position: center center; /* centra la imagen */
-    animation: moveBackground 30s linear infinite; /* más rápido */
+    background-position: center center;
+    animation: moveBackground 30s linear infinite; /* velocidad de movimiento */
+    font-family: Arial, sans-serif;
+    color: #00FF00;
+    text-align: center;
 }
 
+/* ===== Animación del fondo ===== */
 @keyframes moveBackground {
     0% { background-position: 0 0; }
     100% { background-position: 1000px 1000px; }
 }
-/*Fondo centrado y animación más rápida
-/* Mensaje centrado con animación */
-#message {
+
+/* ===== Mensaje centrado ===== */
+.message {
     position: absolute;
-    top: 10%;
+    top: 30%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
+    z-index: 2;
     text-align: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #50fa7b;
-    text-shadow: 0 0 5px #50fa7b, 0 0 10px #50fa7b;
-    animation: floatZoom 2s infinite alternate, glowMessage 1.5s infinite alternate;
 }
 
-#message div {
-    margin: 5px 0;
+.message h1 {
+    font-size: 3em;
+    margin: 0;
+    animation: floatText 2s ease-in-out infinite alternate;
 }
 
-@keyframes floatZoom {
-    0% { transform: translateX(-50%) scale(1); }
-    50% { transform: translateX(-50%) scale(1.05); }
-    100% { transform: translateX(-50%) scale(1); }
+.message h2 {
+    font-size: 2em;
+    margin: 0;
+    animation: floatText 2s ease-in-out infinite alternate;
 }
 
-@keyframes glowMessage {
-    0% { text-shadow: 0 0 5px #50fa7b, 0 0 10px #50fa7b; }
-    50% { text-shadow: 0 0 25px #50fa7b, 0 0 50px #50fa7b; }
-    100% { text-shadow: 0 0 5px #50fa7b, 0 0 10px #50fa7b; }
+/* ===== Animación de texto ===== */
+@keyframes floatText {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
 }
 
-/* Fotos flotando */
-#floating-photos {
+/* ===== Fotos flotando ===== */
+.photos {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
-.photo {
+.floating {
+    width: 120px;
+    margin: 10px;
+    animation: floatPhoto 6s ease-in-out infinite alternate;
+}
+
+/* Animación individual de fotos */
+@keyframes floatPhoto {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+    100% { transform: translateY(0) rotate(-10deg); }
+}
+
+/* ===== Botón de música ===== */
+button {
     position: absolute;
-    width: 150px;
-    border-radius: 15px;
-}
-
-/* Botón de música */
-#music-button-container {
-    position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-}
-
-#music-button-container button {
     padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 10px;
+    font-size: 1.2em;
     border: none;
-    background-color: #50fa7b;
-    color: black;
+    border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 0 10px #50fa7b;
-}
-
-#music-button-container button:hover {
-    background-color: #39e07b;
+    background-color: #00FF00;
+    color: black;
+    z-index: 3;
 }
