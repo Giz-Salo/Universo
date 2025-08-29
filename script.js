@@ -14,8 +14,8 @@ const floatingPhotos = document.querySelectorAll('.floating');
 floatingPhotos.forEach(photo => {
     let x = Math.random() * window.innerWidth;
     let y = Math.random() * window.innerHeight;
-    let dx = (Math.random() - 0.5) * 3; // velocidad horizontal
-    let dy = (Math.random() - 0.5) * 3; // velocidad vertical
+    let dx = (Math.random() - 0.5) * 3.5; // velocidad horizontal
+    let dy = (Math.random() - 0.5) * 3.5; // velocidad vertical
 
     photo.style.left = x + 'px';
     photo.style.top = y + 'px';
@@ -30,5 +30,5 @@ floatingPhotos.forEach(photo => {
 
         photo.style.left = x + 'px';
         photo.style.top = y + 'px';
-    }, 25); // más rápido
+    }, 25); // movimiento más rápido
 });
