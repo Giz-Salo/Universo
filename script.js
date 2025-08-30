@@ -1,46 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const photos = document.querySelectorAll(".photo");
-    let photoData = [];
+  const universe = document.querySelector(".universe");
+  const music = document.getElementById("bg-music");
+  const musicBtn = document.getElementById("music-btn");
 
-    // Centro de la pantalla
-    let centerX = window.innerWidth / 2;
-    let centerY = window.innerHeight / 2;
+  // Generar imágenes flotantes
+  const images = [
+    "img1.jpg", "img2.jpg", "img3.jpg"
+  ];
 
-    // Inicializar posiciones y velocidad
-    photos.forEach(photo => {
-        let x = centerX + (Math.random() * 200 - 100);
-        let y = centerY + (Math.random() * 200 - 100);
+  images.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.classList.add("floating");
 
-        let dx = (Math.random() - 0.5) * 3; // velocidad X
-        let dy = (Math.random() - 0.5) * 3; // velocidad Y
+    // Posiciones aleatorias iniciales
+    img.style.top = `${Math.random() * 80}vh`;
+    img.style.left = `${Math.random() * 80}vw`;
+    img.style.animationDuration = `${15 + Math.random() * 10}s`;
 
-        photoData.push({ photo, x, y, dx, dy });
-        photo.style.left = `${x}px`;
-        photo.style.top = `${y}px`;
-    });
+    document.body.appendChild(img);
+  });
 
-    // Animación
-    function animate() {
-        photoData.forEach(obj => {
-            obj.x += obj.dx;
-            obj.y += obj.dy;
-
-            // Rebote en bordes
-            if (obj.x < 0 || obj.x > window.innerWidth - 150) obj.dx *= -1;
-            if (obj.y < 0 || obj.y > window.innerHeight - 150) obj.dy *= -1;
-
-            obj.photo.style.left = `${obj.x}px`;
-            obj.photo.style.top = `${obj.y}px`;
-        });
-
-        requestAnimationFrame(animate);
+  // Botón de música
+  musicBtn.addEventListener("click", () => {
+    if (music.paused) {
+      music.play();
+      musicBtn.textContent = "⏸️ Pausar Música";
+    } else {
+      music.pause();
+      musicBtn.textContent = "▶️ Reproducir Música";
     }
-
-    animate();
-
-    // Ajustar centro al redimensionar pantalla
-    window.addEventListener("resize", () => {
-        centerX = window.innerWidth / 2;
-        centerY = window.innerHeight / 2;
-    });
+  });
 });
