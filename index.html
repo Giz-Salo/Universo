@@ -1,34 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mi Universo para Ti 💚🌌</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felices 4 Meses 💚</title>
+    <link rel="stylesheet" href="style.css">
 
-  <!-- Meta para vista previa -->
-  <meta property="og:title" content="Mi Universo para Ti 💚🌌" />
-  <meta property="og:description" content="¡Felices 4 meses! Te amo mucho." />
-  <meta property="og:image" content="https://i.imgur.com/Zpp5ujc.jpeg" />
-  <meta property="og:url" content="https://giz-salo.github.io/Universo/" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <link rel="stylesheet" href="styles.css" />
+    <!-- Meta para vista previa en WhatsApp y redes -->
+    <meta property="og:title" content="Mi Universo para Ti 💚🌌" />
+    <meta property="og:description" content="¡Felices 4 meses! Te amo mucho." />
+    <meta property="og:image" content="https://raw.githubusercontent.com/Giz-Salo/Universo/main/portada.jpg" />
+    <meta property="og:url" content="https://giz-salo.github.io/Universo/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
 </head>
 <body>
-  <div class="universe"></div>
+    <!-- Mensaje central -->
+    <div id="message">
+        <div>¡Felices 4 meses!!</div>
+        <div>Te amo 💚💙</div>
+    </div>
 
-  <div class="message">
-    <h1>💚 Feliz Aniversario 💚</h1>
-    <p>Eres mi universo entero. 🌌💫</p>
-  </div>
+    <!-- Contenedor de fotos -->
+    <div id="floating-photos">
+        <img src="foto1.jpg" class="photo" alt="Foto 1">
+        <img src="foto2.jpg" class="photo" alt="Foto 2">
+        <img src="foto3.jpg" class="photo" alt="Foto 3">
+        <img src="foto4.jpg" class="photo" alt="Foto 4">
+        <img src="foto5.jpg" class="photo" alt="Foto 5">
+        <img src="foto6.jpg" class="photo" alt="Foto 6">
+        <img src="foto7.jpg" class="photo" alt="Foto 7">
+        <img src="foto8.jpg" class="photo" alt="Foto 8">
+    </div>
 
-  <button id="music-btn">⏸️ Pausar Música</button>
+    <!-- Botón para controlar música -->
+    <div id="music-button-container">
+        <button id="music-toggle">🎵 Reproducir música</button>
+    </div>
 
-  <audio id="bg-music" autoplay loop>
-    <source src="musica.mp3" type="audio/mp3">
-  </audio>
+    <!-- Audio -->
+    <audio id="music" loop>
+        <source src="cancion.m4a" type="audio/mp4">
+        Tu navegador no soporta la reproducción de audio.
+    </audio>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

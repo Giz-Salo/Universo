@@ -1,34 +1,56 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const universe = document.querySelector(".universe");
-  const music = document.getElementById("bg-music");
-  const musicBtn = document.getElementById("music-btn");
+    const photos = document.querySelectorAll(".photo");
+    const music = document.getElementById("music");
+    const musicToggle = document.getElementById("music-toggle");
+    let photoData = [];
 
-  // Generar imágenes flotantes
-  const images = [
-    "img1.jpg", "img2.jpg", "img3.jpg"
-  ];
+    // Botón para alternar música
+    musicToggle.addEventListener("click", () => {
+        if (music.paused) {
+            music.play();
+            musicToggle.textContent = "⏸️ Pausar música";
+        } else {
+            music.pause();
+            musicToggle.textContent = "🎵 Reproducir música";
+        }
+    });
 
-  images.forEach(src => {
-    const img = document.createElement("img");
-    img.src = src;
-    img.classList.add("floating");
+    // Centro pantalla
+    let centerX = window.innerWidth / 2;
+    let centerY = window.innerHeight / 2;
 
-    // Posiciones aleatorias iniciales
-    img.style.top = `${Math.random() * 80}vh`;
-    img.style.left = `${Math.random() * 80}vw`;
-    img.style.animationDuration = `${15 + Math.random() * 10}s`;
+    // Inicializar posiciones
+    photos.forEach(photo => {
+        let x = centerX + (Math.random() * 200 - 100);
+        let y = centerY + (Math.random() * 200 - 100);
 
-    document.body.appendChild(img);
-  });
+        let dx = (Math.random() - 0.5) * 3;
+        let dy = (Math.random() - 0.5) * 3;
 
-  // Botón de música
-  musicBtn.addEventListener("click", () => {
-    if (music.paused) {
-      music.play();
-      musicBtn.textContent = "⏸️ Pausar Música";
-    } else {
-      music.pause();
-      musicBtn.textContent = "▶️ Reproducir Música";
+        photoData.push({ photo, x, y, dx, dy });
+        photo.style.left = `${x}px`;
+        photo.style.top = `${y}px`;
+    });
+
+    function animate() {
+        photoData.forEach(obj => {
+            obj.x += obj.dx;
+            obj.y += obj.dy;
+
+            if (obj.x < 0 || obj.x > window.innerWidth - 150) obj.dx *= -1;
+            if (obj.y < 0 || obj.y > window.innerHeight - 150) obj.dy *= -1;
+
+            obj.photo.style.left = `${obj.x}px`;
+            obj.photo.style.top = `${obj.y}px`;
+        });
+
+        requestAnimationFrame(animate);
     }
-  });
+
+    animate();
+
+    window.addEventListener("resize", () => {
+        centerX = window.innerWidth / 2;
+        centerY = window.innerHeight / 2;
+    });
 });
